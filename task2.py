@@ -3,7 +3,7 @@ def get_successful_students(students_list, passing_score=60):
     for i in students_list:
         name= i["name"]
         scores = i["scores"]
-        grades = scores.items()
+        grades = scores.values()
 
         if min(grades) >= passing_score:
             succes_students[name] = sum(grades) / len(grades)
@@ -20,4 +20,6 @@ students_math_results = [
 "Discrete Math": 50}}
 ]
 
-
+print(f'The successful students are:')
+for name, grade in get_successful_students(students_math_results).items():
+    print(f'{name} - grade {grade}')
