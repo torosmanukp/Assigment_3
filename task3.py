@@ -1,3 +1,21 @@
+def analyze_methods(data):
+    result = {}
+    for i in data:
+        method= i["method"]
+        error= i["error"]
+        time= i["time_ms"]
+        iteration= i["iterations_count"]
+
+        if method not in result:
+            result[method] = {"max_error": error,
+                              "total_time_ms": time,
+                              "iterations_count": iteration}
+        else:
+            result[method]["max_error"]= max(error, result[method]["max_error"])
+            result[method]["total_time_ms"]+=time
+            result[method]["iterations_count"]+=iteration
+    return result
+
 
 
 experiments_data = [
