@@ -4,7 +4,7 @@ def analyze_methods(data):
         method= i["method"]
         error= i["error"]
         time= i["time_ms"]
-        iteration= i["iterations_count"]
+        iteration= i["iteration"]
 
         if method not in result:
             result[method] = {"max_error": error,
@@ -33,3 +33,6 @@ experiments_data = [
 "time_ms": 2.1}
 ]
 
+print(f'The result is:')
+for met, data in analyze_methods(experiments_data).items():
+    print(f'Method {met} - info: {data}')
